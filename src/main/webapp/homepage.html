@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>జై బోలో గణేష్ మహారాజ్ కీ జై</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="background-pattern"></div>
+
+  <div class="container">
+    
+    <div class="top-bar">
+      <div class="logo-section">
+        <div class="om-symbol">ॐ</div>
+        <span class="brand-text">GokulKrishna Youth</span>
+      </div>
+      <div class="designer-tag">By Nallagorla Saicharan</div>
+    </div>
+
+    <div class="hero-section">
+      <div class="icon-circle">
+        <div class="rotating-border"></div>
+        <span class="main-icon">🪔</span>
+      </div>
+      
+      <h1 class="hero-title">
+        జై బోలో గణేష్ మహారాజ్ కీ జై
+      </h1>
+      
+      <p class="subtitle">Welcome to our spiritual community</p>
+      
+      <div class="decorative-line">
+        <span class="dot"></span>
+        <span class="line"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="info-card">
+        <div class="card-icon">✨</div>
+        <h3>Join Our Community</h3>
+        <p>Connect with like-minded individuals and celebrate our traditions together</p>
+      </div>
+
+      <div class="info-card">
+        <div class="card-icon">🙏</div>
+        <h3>Spiritual Growth</h3>
+        <p>Embark on a journey of self-discovery and spiritual enlightenment</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <button onclick="window.location.href='/signup'" class="cta-btn primary-btn">
+        <span>Create Account</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      
+      <button onclick="window.location.href='/login'" class="cta-btn secondary-btn">
+        <span>Sign In</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3"/>
+        </svg>
+      </button>
+    </div>
+
+    <footer class="footer">
+      <p>May Lord Ganesha bless you with wisdom and prosperity</p>
+    </footer>
+
+  </div>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fef6e4, #fff9f0);
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 0;
+      position: relative;
+    }
+
+    .background-pattern {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 183, 77, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(244, 143, 177, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      z-index: 1;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .om-symbol {
+      font-size: 32px;
+      color: #ff6f00;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c3e50;
+      letter-spacing: 0.5px;
+    }
+
+    .designer-tag {
+      font-size: 12px;
+      color: #7f8c8d;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 111, 0, 0.2);
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 240, 0.9));
+      border-radius: 30px;
+      box-shadow: 0 10px 40px rgba(255, 111, 0, 0.1);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 183, 77, 0.1), transparent 50%);
+      animation: rotateGradient 20s linear infinite;
+    }
+
+    .icon-circle {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
+    }
+
+    .rotating-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #ff6f00;
+      border-right-color: #ff8f00;
+      animation: rotate 3s linear infinite;
+    }
+
+    .main-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      filter: drop-shadow(0 4px 8px rgba(255, 111, 0, 0.3));
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      color: #d84315;
+      margin-bottom: 15px;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #5d4037;
+      font-weight: 400;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .decorative-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #ff6f00;
+      border-radius: 50%;
+    }
+
+    .line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff6f00, transparent);
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 111, 0, 0.1);
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(255, 111, 0, 0.15);
+      border-color: rgba(255, 111, 0, 0.3);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .info-card h3 {
+      font-size: 20px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .info-card p {
+      font-size: 14px;
+      color: #7f8c8d;
+      line-height: 1.6;
+    }
+
+    .cta-section {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      min-width: 180px;
+      justify-content: center;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #ff6f00, #ff8f00);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 111, 0, 0.3);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 111, 0, 0.4);
+    }
+
+    .secondary-btn {
+      background: white;
+      color: #ff6f00;
+      border: 2px solid #ff6f00;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .secondary-btn:hover {
+      background: #fff3e0;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 111, 0, 0.2);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: #7f8c8d;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes rotateGradient {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Custom scrollbar */
+    body::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    body::-webkit-scrollbar-track {
+      background: #fef6e4;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #ff6f00, #ff8f00);
+      border-radius: 10px;
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #ff8f00, #ffa726);
+    }
+
+    body {
+      scrollbar-width: thin;
+      scrollbar-color: #ff6f00 #fef6e4;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 40px 20px;
+      }
+
+      .top-bar {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .logo-section {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .cta-section {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 20px;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+
+      .card-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</body>
+</html>
