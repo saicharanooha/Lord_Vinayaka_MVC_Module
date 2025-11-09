@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Successful - GokulKrishna Youth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .success-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            padding: 50px 40px;
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s ease-out 0.2s both;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        .success-icon svg {
+            width: 45px;
+            height: 45px;
+            stroke: white;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+        
+        .checkmark {
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: draw 0.5s ease-out 0.5s forwards;
+        }
+        
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .welcome-message {
+            color: #667eea;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .user-info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .user-info p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .user-info strong {
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .message {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .footer-text {
+            margin-top: 30px;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        .login-time {
+            color: #999;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">
+            <svg viewBox="0 0 52 52">
+                <path class="checkmark" d="M14 27l7.5 7.5L38 18"/>
+            </svg>
+        </div>
+        
+        <h1>Login Successful!</h1>
+        
+        <p class="welcome-message" th:text="'Welcome back, ' + ${userName} + '!'">Welcome back, User!</p>
+        
+        <div class="user-info">
+            <p>User ID</p>
+            <strong th:text="${userId}">USER123</strong>
+            
+            <p style="margin-top: 15px;">Email</p>
+            <strong th:text="${userEmail}">user@example.com</strong>
+            
+            <p class="login-time" th:text="'Logged in at: ' + ${#temporals.format(loginTime, 'dd MMM yyyy, hh:mm a')}">
+                Logged in at: 08 Nov 2025, 10:30 AM
+            </p>
+        </div>
+        
+        <p class="message">
+            You have successfully logged into your GokulKrishna Youth Team account. 
+            You can now access all features and continue your activities.
+        </p>
+        
+        <div class="btn-container">
+            <a th:href="@{/dashboard}" class="btn btn-primary">Go to Dashboard</a>
+            <a th:href="@{/profile}" class="btn btn-secondary">View Profile</a>
+        </div>
+        
+        <p class="footer-text">
+            If this wasn't you, please <a href="#" th:href="@{/logout}" style="color: #667eea;">logout immediately</a> 
+            and contact support.
+        </p>
+    </div>
+    
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        // Auto-redirect to dashboard after 3 seconds (optional)
+        setTimeout(function() {
+            // Uncomment to enable auto-redirect
+            // window.location.href = /*[[@{/dashboard}]]*/ '/dashboard';
+        }, 3000);
+        /*]]>*/
+    </script>
+</body>
+</html>

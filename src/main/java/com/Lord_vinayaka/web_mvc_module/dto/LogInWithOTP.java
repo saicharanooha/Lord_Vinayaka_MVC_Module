@@ -2,24 +2,27 @@ package com.Lord_vinayaka.web_mvc_module.dto;
 
 public class LogInWithOTP {
 	
-	public String Username;
+	public int id;
 
-	public String getUsername() {
-		return Username;
+	public int getId() {
+		return id;
 	}
 
-	public void setUsername(String username) {
-		Username = username;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public LogInWithOTP(String username) {
+	public LogInWithOTP(int id) {
 		super();
-		Username = username;
+		this.id = id;
 	}
 
 	public LogInWithOTP() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	
 
 }

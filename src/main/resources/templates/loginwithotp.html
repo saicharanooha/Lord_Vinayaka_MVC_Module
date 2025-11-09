@@ -58,7 +58,7 @@
             font-size: 14px;
         }
         
-        input[type="email"] {
+        input[type="text"] {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
@@ -185,14 +185,14 @@
         
         <div id="otp-message" class="message hidden"></div>
         
-        <!-- Email Input Section -->
-        <div id="email-section">
+        <!-- User ID Input Section -->
+        <div id="id-section">
             <form onsubmit="sendOTP(event)">
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" 
-                           id="email" 
-                           placeholder="Enter your email address"
+                    <label for="userId">User ID</label>
+                    <input type="text" 
+                           id="userId" 
+                           placeholder="Enter your user ID"
                            required>
                 </div>
                 
@@ -203,7 +203,8 @@
         <!-- OTP Verification Section -->
         <div id="otp-section" class="hidden">
             <p style="text-align: center; margin-bottom: 20px; color: #666;">
-                Enter the 5-digit OTP sent to <br><strong id="email-display"></strong>
+                Enter the 5-digit OTP sent to your registered contact<br>
+                <strong>User ID: <span id="id-display"></span></strong>
             </p>
             
             <form onsubmit="verifyOTP(event)">
@@ -225,7 +226,7 @@
             </form>
             
             <div class="links">
-                <a href="#" onclick="changeEmail(); return false;">Change Email</a>
+                <a href="#" onclick="changeUserId(); return false;">Change User ID</a>
             </div>
         </div>
     </div>
@@ -235,13 +236,13 @@
         
         function sendOTP(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            document.getElementById('email-display').textContent = email;
+            const userId = document.getElementById('userId').value;
+            document.getElementById('id-display').textContent = userId;
             
-            document.getElementById('email-section').classList.add('hidden');
+            document.getElementById('id-section').classList.add('hidden');
             document.getElementById('otp-section').classList.remove('hidden');
             
-            showMessage('OTP sent successfully to your email!', 'success');
+            showMessage('OTP sent successfully to your registered contact!', 'success');
             startTimer();
             
             // Focus first OTP input
@@ -254,12 +255,16 @@
                 .map(input => input.value)
                 .join('');
             
+            const userId = document.getElementById('id-display').textContent;
+            
             showMessage('OTP verified! Logging in...', 'success');
             clearInterval(timerInterval);
             
             // Simulate login redirect after 1 second
             setTimeout(() => {
-                console.log('Login successful with OTP:', otp);
+                console.log('Login successful - User ID:', userId, 'OTP:', otp);
+                // Redirect to dashboard or home page
+                // window.location.href = '/dashboard';
             }, 1000);
         }
         
@@ -275,11 +280,11 @@
             startTimer();
         }
         
-        function changeEmail() {
-            document.getElementById('email-section').classList.remove('hidden');
+        function changeUserId() {
+            document.getElementById('id-section').classList.remove('hidden');
             document.getElementById('otp-section').classList.add('hidden');
             clearInterval(timerInterval);
-            document.getElementById('email').value = '';
+            document.getElementById('userId').value = '';
             document.querySelectorAll('.otp-input').forEach(input => input.value = '');
         }
         

@@ -11,9 +11,6 @@ import com.Lord_vinayaka.web_mvc_module.entity.UserSignUpCredentials;
 
 import jakarta.transaction.Transactional;
 @Repository
-public interface SignupUserCred extends CrudRepository<UserSignUpCredentials,Short> {
+public interface SignupUserCred extends CrudRepository<UserSignUpCredentials,Long> {
 	
-	@Query(value = "SELECT * FROM user_sign_up_credentials WHERE user_name = :email", nativeQuery = true)
-   public  UserSignUpCredentials findByEmail(@Param("email") String email);
-	
-	}
+}

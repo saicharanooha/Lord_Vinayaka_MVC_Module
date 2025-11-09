@@ -4,13 +4,15 @@ import java.util.Random;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 @Entity
 public class UserProfile {
 	@Id
-	public int id;
-	public Random random;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 	public String name;
 	public String surname;
 	public String motherName;
@@ -19,17 +21,11 @@ public class UserProfile {
 	public String zipcode;
 	public String email;
 	public long phonenumber;
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
-	}
-	public Random getRandom() {
-		return random;
-	}
-	public void setRandom(Random random) {
-		this.random = random;
 	}
 	public String getName() {
 		return name;
@@ -79,11 +75,10 @@ public class UserProfile {
 	public void setPhonenumber(long phonenumber) {
 		this.phonenumber = phonenumber;
 	}
-	public UserProfile(int id, Random random, String name, String surname, String motherName, String fatherName,
-			String villege, String zipcode, String email, long phonenumber) {
+	public UserProfile(Long id, String name, String surname, String motherName, String fatherName, String villege,
+			String zipcode, String email, long phonenumber) {
 		super();
-		this.id = random.nextInt(70000, 79999);
-		this.random = random;
+		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.motherName = motherName;
@@ -95,14 +90,16 @@ public class UserProfile {
 	}
 	public UserProfile() {
 		super();
-		this.random= new Random();
-		this.id=random.nextInt(70000, 79999);
+		// TODO Auto-generated constructor stub
+	}
+			
 		
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-}
+	
+
 
 	
 

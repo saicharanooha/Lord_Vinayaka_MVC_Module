@@ -40,8 +40,8 @@ public class RegisterController {
 			    "Hello " + signup.getName() + ",\n\n" +
 			    "Thank you for signing up!\n\n" +
 			    "Here are your account details:\n" +
-			    "• Username: " + signup.getUsername() + "\n" +
-			    "• Password: " + signup.getPassword() + "\n\n" +
+			    "• User id: " + result.getId() + "\n" +
+			    "• Password: " + result.getPassword() + "\n\n" +
 			    "Please keep this information confidential.\n\n" +
 			    "Regards,\n" +
 			    "GokulKrishna Youth Team"
