@@ -10,7 +10,7 @@ import com.Lord_vinayaka.web_mvc_module.entity.UserSignUpCredentials;
 import com.Lord_vinayaka.web_mvc_module.exceptions.UserNotFoundException;
 import com.Lord_vinayaka.web_mvc_module.repository.SignupUserCred;
 @Controller
-public class LogInService {
+public class LoginService {
 	@Autowired
 	private SignupUserCred cred;
 	public boolean validateAccount(LogIn login) {// checks account exists or not

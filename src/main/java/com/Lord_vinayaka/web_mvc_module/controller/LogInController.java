@@ -14,12 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Lord_vinayaka.web_mvc_module.dto.LogIn;
 import com.Lord_vinayaka.web_mvc_module.exceptions.UserNotFoundException;
 import com.Lord_vinayaka.web_mvc_module.repository.SignupUserCred;
-import com.Lord_vinayaka.web_mvc_module.service.LogInService;
+import com.Lord_vinayaka.web_mvc_module.service.LoginService;
 
 @Controller
 public class LogInController {
 	@Autowired
-	private LogInService loginService;
+	private LoginService loginService;
 	@GetMapping("/loginpwd")
 	public ModelAndView loginWithUsernameAndPassword() {
 		ModelAndView view= new ModelAndView();
