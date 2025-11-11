@@ -11,6 +11,6 @@ import com.Lord_vinayaka.web_mvc_module.entity.UserSignUpCredentials;
 
 import jakarta.transaction.Transactional;
 @Repository
-public interface SignupUserCred extends CrudRepository<UserSignUpCredentials,Long> {
+public interface SignupUserCred extends CrudRepository<UserSignUpCredentials,Short> {
 	
 }

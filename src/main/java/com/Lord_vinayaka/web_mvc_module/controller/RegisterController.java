@@ -16,8 +16,7 @@ import com.Lord_vinayaka.web_mvc_module.service.SignUpService;
 public class RegisterController {
 	@Autowired
 	private SignUpService signupservice;
-	@Autowired
-	private JavaMailSender sender;
+	
 	
 	@GetMapping("/signup")
 	public ModelAndView signUpRequest() {
@@ -30,25 +29,11 @@ public class RegisterController {
 	public ModelAndView signUpRequest(@ModelAttribute("key") SignUp signup) {
 		
 		UserSignUpCredentials result= signupservice.save(signup);
-		SimpleMailMessage message = new SimpleMailMessage();
+		
 		ModelAndView view = new ModelAndView();
 		view.addObject("key", result);
 		view.setViewName("signupresult");
-		message.setTo(signup.getEmail());
-		message.setSubject("SignUp_Sucesss");
-		message.setText(
-			    "Hello " + signup.getName() + ",\n\n" +
-			    "Thank you for signing up!\n\n" +
-			    "Here are your account details:\n" +
-			    "• User id: " + result.getId() + "\n" +
-			    "• Password: " + result.getPassword() + "\n\n" +
-			    "Please keep this information confidential.\n\n" +
-			    "Regards,\n" +
-			    "GokulKrishna Youth Team"
-			);
-
-			sender.send(message);
-		
+		signupservice.sendMessage(signup, result);
 		return view;
 		
 		

@@ -8,15 +8,15 @@ import jakarta.persistence.Table;
 @Table(name = "user_sign_up_credentials")
 public class UserSignUpCredentials {
 	@Id
-	public long id;
+	public short id;
 	@Column(name = "user_name") 
 	public String username;
-	@Column(name = "email")
+	@Column(name = "password")
 	public String password;
-	public long getId() {
+	public short getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(short id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -31,7 +31,7 @@ public class UserSignUpCredentials {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public UserSignUpCredentials(long id, String username, String password) {
+	public UserSignUpCredentials(short id, String username, String password) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -41,6 +41,5 @@ public class UserSignUpCredentials {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-		
-
+	
 }

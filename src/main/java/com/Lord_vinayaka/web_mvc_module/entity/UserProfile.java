@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class UserProfile {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private short id;
 	public String name;
 	public String surname;
 	public String motherName;
@@ -21,10 +21,10 @@ public class UserProfile {
 	public String zipcode;
 	public String email;
 	public long phonenumber;
-	public Long getId() {
+	public short getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(short id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -75,7 +75,7 @@ public class UserProfile {
 	public void setPhonenumber(long phonenumber) {
 		this.phonenumber = phonenumber;
 	}
-	public UserProfile(Long id, String name, String surname, String motherName, String fatherName, String villege,
+	public UserProfile(short id, String name, String surname, String motherName, String fatherName, String villege,
 			String zipcode, String email, long phonenumber) {
 		super();
 		this.id = id;
@@ -92,14 +92,8 @@ public class UserProfile {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-			
-		
-		// TODO Auto-generated constructor stub
-	}
 	
-	
-	
-
+}
 
 	
 

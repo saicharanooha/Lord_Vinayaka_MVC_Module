@@ -1,450 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up - GokulKrishna Youth</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary-color: #ff9800; /* Warm Amber/Gold, for spiritual warmth */
-      --primary-dark: #f57c00;
-      --secondary-color: #6a1b9a; /* Deep Violet, for spirituality/meditation */
-      --text-color: #333;
-      --light-text-color: #757575;
-      --background-light: #f4f6f8; /* Very light, clean background */
-      --card-background: #ffffff;
-      --error-color: #d32f2f;
-      --success-color: #43a047;
-      --border-radius-large: 12px;
-      --border-radius-small: 6px;
-    }
-
-    /* === Base & Layout === */
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--background-light);
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start; /* Align to the top, which is better for long forms */
-      min-height: 100vh;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 900px; /* Wider container to comfortably fit two-column layout */
-      padding: 30px;
-      box-sizing: border-box;
-    }
-
-    /* Subtle background pattern for spiritual theme - a gradient overlay */
-    .background-pattern {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(255, 152, 0, 0.05), rgba(106, 27, 154, 0.05));
-      z-index: -1;
-    }
-
-    /* === Top Bar & Logo === */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-      padding: 10px 0;
-    }
-
-    .logo-section {
-      display: flex;
-      align-items: center;
-    }
-
-    .om-symbol {
-      font-size: 28px;
-      line-height: 1;
-      color: var(--primary-color);
-      margin-right: 8px;
-      font-weight: 700;
-    }
-
-    .brand-text {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--secondary-color);
-      letter-spacing: -0.5px;
-    }
-
-    .back-link {
-      color: var(--light-text-color);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-
-    .back-link:hover {
-      color: var(--primary-color);
-    }
-
-    /* === Form Section Card === */
-    .form-section {
-      background-color: var(--card-background);
-      padding: 40px;
-      border-radius: var(--border-radius-large);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Clean, modern shadow */
-    }
-
-    /* === Form Header === */
-    .form-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .icon-circle-small {
-      background-color: var(--primary-color);
-      color: white;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-      margin: 0 auto 15px;
-    }
-
-    .form-title {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--secondary-color);
-      margin: 0 0 5px;
-    }
-
-    .form-subtitle {
-      color: var(--light-text-color);
-      font-size: 16px;
-      margin: 0;
-    }
-
-    /* === Form Structure === */
-    .signup-form {
-      display: flex;
-      flex-direction: column;
-      gap: 25px; /* Spacing between major form sections */
-    }
-
-    .form-section-title {
-      display: flex;
-      align-items: center;
-      border-bottom: 2px solid var(--background-light);
-      padding-bottom: 8px;
-      margin-bottom: 15px;
-    }
-
-    .form-section-title h3 {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text-color);
-      margin: 0;
-    }
-
-    .section-icon {
-      font-size: 20px;
-      color: var(--primary-dark);
-      margin-right: 10px;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 20px;
-    }
-
-    .form-group {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* === Form Elements === */
-    label {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-color);
-      margin-bottom: 6px;
-    }
-
-    .required {
-      color: var(--primary-dark);
-    }
-
-    .form-control {
-      padding: 12px 15px;
-      border: 1px solid #e0e0e0;
-      border-radius: var(--border-radius-small);
-      font-size: 16px;
-      color: var(--text-color);
-      background-color: #fcfcfc;
-      transition: border-color 0.3s, box-shadow 0.3s;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-
-    .form-control::placeholder {
-      color: #bdbdbd;
-    }
-
-    .form-control:focus {
-      border-color: var(--primary-color);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
-    }
-
-    /* === Submit Button === */
-    .form-actions {
-      margin-top: 15px;
-      text-align: center;
-    }
-
-    .submit-btn {
-      width: 100%;
-      max-width: 300px;
-      padding: 14px 25px;
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 50px; /* Pill shape for a softer, inviting look */
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.1s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
-      margin: 0 auto;
-    }
-
-    .submit-btn:hover {
-      background: var(--primary-dark);
-      box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
-    }
-
-    .submit-btn:active {
-      transform: translateY(1px);
-    }
-
-    .submit-btn svg {
-      stroke: white;
-    }
-
-    /* === Messages & Footer === */
-    .alert {
-      padding: 10px 15px;
-      border-radius: var(--border-radius-small);
-      margin-bottom: 20px;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: center;
-    }
-
-    .alert-error {
-      background-color: #fce4e4;
-      color: var(--error-color);
-      border: 1px solid var(--error-color);
-    }
-
-    .alert-success {
-      background-color: #e8f5e9;
-      color: var(--success-color);
-      border: 1px solid var(--success-color);
-    }
-
-    .form-footer {
-      text-align: center;
-      font-size: 14px;
-      color: var(--light-text-color);
-      margin-top: 20px;
-    }
-
-    .login-link {
-      color: var(--secondary-color);
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .login-link:hover {
-      text-decoration: underline;
-      color: var(--primary-dark);
-    }
-
-    /* === Responsive Adjustments === */
-    @media (max-width: 768px) {
-      .form-row {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .container {
-        padding: 20px;
-      }
-
-      .form-section {
-        padding: 25px;
-      }
-
-      .form-title {
-        font-size: 24px;
-      }
-
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 20px;
-      }
-
-      .back-link {
-        font-size: 13px;
-      }
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - GokulKrishna Youth</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--p:#ff9800;--pd:#f57c00;--s:#6a1b9a;--t:#333;--l:#757575;--bg:#f4f6f8;--c:#fff;--e:#d32f2f;--su:#43a047;--r:6px;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--t);margin:0;padding:0;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;}
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(255,152,0,0.05),rgba(106,27,154,0.05));z-index:-1;}
+.cont{width:100%;max-width:600px;padding:12px;}
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.logo{display:flex;align-items:center;}.om{font-size:20px;color:var(--p);margin-right:4px;font-weight:700;}.brand{font-size:16px;font-weight:600;color:var(--s);}
+.back{color:var(--l);text-decoration:none;font-weight:500;font-size:12px;}.back:hover{color:var(--p);}
+.section{background:var(--c);padding:15px;border-radius:var(--r);box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.header{text-align:center;margin-bottom:12px;}
+.icon-small{background:var(--p);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:14px;margin:0 auto 6px;}
+.title{font-size:20px;font-weight:700;color:var(--s);margin:0 0 2px;}
+.subtitle{color:var(--l);font-size:12px;margin:0;}
+.form{display:flex;flex-direction:column;gap:8px;}
+.sec-title{display:flex;align-items:center;border-bottom:1px solid var(--bg);padding-bottom:3px;margin-bottom:6px;}
+.sec-title h3{font-size:14px;font-weight:600;margin:0;}.sec-icon{font-size:14px;color:var(--pd);margin-right:6px;}
+.row{display:flex;gap:6px;}.group{flex:1;display:flex;flex-direction:column;}
+label{font-size:12px;font-weight:500;margin-bottom:2px;}.req{color:var(--pd);}
+.input{padding:6px 8px;border:1px solid #e0e0e0;border-radius:var(--r);font-size:12px;color:var(--t);background:#fcfcfc;box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);}
+.input::placeholder{color:#bdbdbd;}.input:focus{border-color:var(--p);outline:none;box-shadow:0 0 0 1.5px rgba(255,152,0,0.2);}
+.actions{text-align:center;margin-top:6px;}
+.btn{width:100%;max-width:200px;padding:8px;background:var(--p);color:#fff;border:none;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:4px;margin:0 auto;box-shadow:0 2px 6px rgba(255,152,0,0.25);}
+.btn:hover{background:var(--pd);box-shadow:0 4px 10px rgba(255,152,0,0.3);}.btn:active{transform:translateY(1px);}
+.alert{padding:6px 10px;border-radius:var(--r);margin-bottom:10px;font-size:12px;text-align:center;}
+.error{background:#fce4e4;color:var(--e);border:1px solid var(--e);}
+.success{background:#e8f5e9;color:var(--su);border:1px solid var(--su);}
+.footer{text-align:center;font-size:12px;color:var(--l);margin-top:8px;}
+.login{color:var(--s);font-weight:600;text-decoration:none;}.login:hover{color:var(--pd);}
+@media(max-width:500px){.row{flex-direction:column;gap:4px;}.cont{padding:10px;}.section{padding:10px;}.title{font-size:18px;}.top-bar{flex-direction:column;align-items:flex-start;gap:4px;}.back{font-size:11px;}}
+</style>
 </head>
 <body>
+<div class="bg"></div>
+<div class="cont">
+<div class="top-bar"><div class="logo"><div class="om">ॐ</div><span class="brand">GokulKrishna Youth</span></div><a href="#" class="back">← Back</a></div>
+<div class="section">
+<div class="header"><div class="icon-small">🪔</div><h1 class="title">Sign Up</h1><p class="subtitle">Join our spiritual community</p></div>
+<form th:action="@{/signup}" th:object="${key}" method="post" class="form">
+<div class="alert error" th:if="${error}" th:text="${error}"></div>
+<div class="alert success" th:if="${success}" th:text="${success}"></div>
 
-  <div class="background-pattern"></div>
+<div class="sec-title"><span class="sec-icon">👤</span><h3>Personal</h3></div>
+<div class="row"><div class="group"><label>First Name <span class="req">*</span></label><input type="text" th:field="*{name}" class="input" placeholder="First Name" required></div><div class="group"><label>Surname <span class="req">*</span></label><input type="text" th:field="*{surname}" class="input" placeholder="Surname" required></div></div>
+<div class="row"><div class="group"><label>Father's Name <span class="req">*</span></label><input type="text" th:field="*{fatherName}" class="input" placeholder="Father's Name" required></div><div class="group"><label>Mother's Name <span class="req">*</span></label><input type="text" th:field="*{motherName}" class="input" placeholder="Mother's Name" required></div></div>
 
-  <div class="container">
-    
-    <div class="top-bar">
-      <div class="logo-section">
-        <div class="om-symbol">ॐ</div>
-        <span class="brand-text">GokulKrishna Youth</span>
-      </div>
-      <a href="#" class="back-link">← Back to Home</a>
-    </div>
+<div class="sec-title"><span class="sec-icon">📍</span><h3>Address</h3></div>
+<div class="row"><div class="group"><label>Village/City <span class="req">*</span></label><input type="text" th:field="*{villege}" class="input" placeholder="Village/City" required></div><div class="group"><label>ZIP <span class="req">*</span></label><input type="text" th:field="*{zipcode}" class="input" placeholder="ZIP" pattern="[0-9]{5,6}" required></div></div>
 
-    <div class="form-section">
-      <div class="form-header">
-        <div class="icon-circle-small">🪔</div>
-        <h1 class="form-title">Create Your Account</h1>
-        <p class="form-subtitle">Join our spiritual community</p>
-      </div>
+<div class="sec-title"><span class="sec-icon">📱</span><h3>Contact</h3></div>
+<div class="row"><div class="group"><label>Email <span class="req">*</span></label><input type="email" th:field="*{email}" class="input" placeholder="Email" required></div><div class="group"><label>Phone <span class="req">*</span></label><input type="tel" th:field="*{phonenumber}" class="input" placeholder="1234567890" pattern="[0-9]{10}" required></div></div>
 
-      <form th:action="@{/signup}" th:object="${key}" method="post" class="signup-form">
+<div class="sec-title"><span class="sec-icon">🔐</span><h3>Security</h3></div>
+<div class="row"><div class="group"><label>Username <span class="req">*</span></label><input type="text" th:field="*{username}" class="input" placeholder="Username" minlength="4" required></div><div class="group"><label>Password <span class="req">*</span></label><input type="password" th:field="*{password}" class="input" placeholder="Password" minlength="6" required></div></div>
 
-        <div class="alert alert-error" th:if="${error}">
-          <span th:text="${error}"></span>
-        </div>
-
-        <div class="alert alert-success" th:if="${success}">
-          <span th:text="${success}"></span>
-        </div>
-
-        <div class="form-section-title">
-          <span class="section-icon">👤</span>
-          <h3>Personal Information</h3>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">First Name <span class="required">*</span></label>
-            <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Enter your first name" required>
-          </div>
-
-          <div class="form-group">
-            <label for="surname">Surname <span class="required">*</span></label>
-            <input type="text" th:field="*{surname}" id="surname" class="form-control" placeholder="Enter your surname" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fatherName">Father's Name <span class="required">*</span></label>
-            <input type="text" th:field="*{fatherName}" id="fatherName" class="form-control" placeholder="Enter father's name" required>
-          </div>
-
-          <div class="form-group">
-            <label for="motherName">Mother's Name <span class="required">*</span></label>
-            <input type="text" th:field="*{motherName}" id="motherName" class="form-control" placeholder="Enter mother's name" required>
-          </div>
-        </div>
-
-        <div class="form-section-title">
-          <span class="section-icon">📍</span>
-          <h3>Address Information</h3>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="villege">Village/City <span class="required">*</span></label>
-            <input type="text" th:field="*{villege}" id="villege" class="form-control" placeholder="Enter your village or city" required>
-          </div>
-
-          <div class="form-group">
-            <label for="zipcode">ZIP Code <span class="required">*</span></label>
-            <input type="text" th:field="*{zipcode}" id="zipcode" class="form-control" placeholder="Enter ZIP code" pattern="[0-9]{5,6}" required>
-          </div>
-        </div>
-
-        <div class="form-section-title">
-          <span class="section-icon">📱</span>
-          <h3>Contact Information</h3>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email Address <span class="required">*</span></label>
-            <input type="email" th:field="*{email}" id="email" class="form-control" placeholder="example@email.com" required>
-          </div>
-
-          <div class="form-group">
-            <label for="phonenumber">Phone Number <span class="required">*</span></label>
-            <input type="tel" th:field="*{phonenumber}" id="phonenumber" class="form-control" placeholder="1234567890" pattern="[0-9]{10}" required>
-          </div>
-        </div>
-
-        <div class="form-section-title">
-          <span class="section-icon">🔐</span>
-          <h3>Account Security</h3>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="username">Username <span class="required">*</span></label>
-            <input type="text" th:field="*{username}" id="username" class="form-control" placeholder="Choose a username" minlength="4" required>
-          </div>
-
-          <div class="form-group">
-            <label for="password">Password <span class="required">*</span></label>
-            <input type="password" th:field="*{password}" id="password" class="form-control" placeholder="Create a strong password" minlength="6" required>
-          </div>
-        </div>
-
-        <div class="form-actions">
-          <button type="submit" class="submit-btn">
-            <span>Create Account</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
-        </div>
-
-        <div class="form-footer">
-          <p>Already have an account? <a href="/loginpwd" class="login-link">Log In</a></p>
-        </div>
-
-      </form>
-    </div>
-
-  </div>
-
+<div class="actions"><button type="submit" class="btn"><span>Create</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+<div class="footer"><p>Already have an account? <a href="/loginpwd" class="login">Log In</a></p></div>
+</form>
+</div>
+</div>
 </body>
 </html>
